@@ -533,8 +533,10 @@ Use when the VM or project is lost. Steps marked (owner) need project-owner righ
 
 ## 10. Open items
 
-- [ ] Slack: restrict API token usage to `<STATIC_IP>` (api.slack.com/apps -> OAuth &
-      Permissions -> Restrict API Token Usage). Afterwards the bot token works only from the VM.
+- [x] 2026-10-30: Slack API token usage restricted to `<STATIC_IP>/32` (api.slack.com/apps ->
+      OAuth & Permissions -> Restrict API Token Usage). The bot token works only from the VM;
+      verified with a restart and a real kick. If the VM's IP ever changes, update this range
+      first, or every kick and DM fails. To undo: delete the range and restart the service.
 - [ ] Slack: revoke the old app-level token `socket` (if still listed).
 - [ ] Delete `.env` from the app owner's laptop (contains revoked tokens only).
 - [ ] Tell the project owner about the OS Login exception (3.4).
