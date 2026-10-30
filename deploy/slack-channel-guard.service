@@ -1,0 +1,14 @@
+[Unit]
+Description=Slack Channel Guard
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/opt/slack-channel-guard/run.sh
+ExecStop=/usr/bin/docker stop slack-channel-guard
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,37 @@
+# Paste into: api.slack.com/apps -> Create New App -> From an app manifest (YAML)
+display_information:
+  name: Channel Guard
+  description: Keeps locked private channels restricted to authorized inviters
+  background_color: "#1f2937"
+features:
+  # The bot DMs inviters and admins; this keeps those DMs visible in the app's Messages tab.
+  app_home:
+    home_tab_enabled: false
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: true
+  bot_user:
+    display_name: Channel Guard
+    always_online: true
+  slash_commands:
+    - command: /channel-guard
+      description: Lock/unlock channels and manage authorized inviters
+      usage_hint: "[lock|unlock|add|remove|list|status|help]"
+      should_escape: true
+oauth_config:
+  scopes:
+    # Private channels only, no user token. groups:write lets the bot call
+    # conversations.kick, and only in channels the bot is a member of.
+    bot:
+      - chat:write
+      - commands
+      - groups:read
+      - groups:write
+settings:
+  event_subscriptions:
+    bot_events:
+      - member_joined_channel
+  interactivity:
+    is_enabled: false
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false

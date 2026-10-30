@@ -1,0 +1,7 @@
+# Allowlist: send only what the image needs to the build. Everything else
+# (.env*, node_modules, data/, test/, .git, CLAUDE.md, README.md, ...) stays out.
+*
+!package.json
+!package-lock.json
+!src
+!src/**

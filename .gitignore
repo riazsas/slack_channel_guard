@@ -1,0 +1,8 @@
+node_modules/
+.env
+data/
+*.log
+*.tgz
+# Local-only notes with company-specific values (project ID, IP, Slack IDs, people)
+CLAUDE.md
+*.local.md
